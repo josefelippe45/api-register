@@ -7,7 +7,7 @@
         "resolveJsonModule": true,
         "baseUrl": "./",
         "paths": {
-            "@shared/*": ["src/shared/*"]
+            "@infra/*": ["src/infra/*"]
         }
     },
     "include": ["src/**/*.ts"],

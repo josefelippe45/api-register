@@ -1,5 +1,5 @@
-import ExpressAdapter from '@shared/infra/http/adapter/ExpressAdapter';
-import Router from '@shared/infra/http/Router';
+import ExpressAdapter from '@infra/http/adapter/ExpressAdapter';
+import Router from '@infra/http/Router';
 
 const http = new ExpressAdapter();
 
