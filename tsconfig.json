@@ -3,7 +3,12 @@
         "outDir": "dist",
         "esModuleInterop": true,
         "module": "commonjs",
-        "moduleResolution": "node"
+        "moduleResolution": "node",
+        "resolveJsonModule": true,
+        "baseUrl": "./",
+        "paths": {
+            "@shared/*": ["src/shared/*"]
+        }
     },
     "include": ["src/**/*.ts"],
     "exclude": ["node_modules", "**/*.d.ts"]

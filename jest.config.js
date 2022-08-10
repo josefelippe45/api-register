@@ -1,3 +1,6 @@
+/* eslint-disable @typescript-eslint/no-var-requires */
+const { pathsToModuleNameMapper } = require('ts-jest');
+const { compilerOptions } = require('./tsconfig');
 /*
  * For a detailed explanation regarding each configuration property and type check, visit:
  * https://jestjs.io/docs/configuration
@@ -20,7 +23,15 @@ module.exports = {
     // collectCoverage: true,
 
     // An array of glob patterns indicating a set of files for which coverage information should be collected
-    // collectCoverageFrom: undefined,
+    collectCoverageFrom: [
+        'src/**/*.ts',
+        '!src/**/error/**',
+        '!src/**/enum/**',
+        '!src/**/fake/**',
+        '!src/**/mock/**',
+        '!src/main.ts',
+        '!src/shared/infra/http/Router.ts',
+    ],
 
     // The directory where Jest should output its coverage files
     coverageDirectory: 'coverage',
@@ -88,7 +99,9 @@ module.exports = {
     // ],
 
     // A map from regular expressions to module names or to arrays of module names that allow to stub out resources with a single module
-    // moduleNameMapper: {},
+    moduleNameMapper: pathsToModuleNameMapper(compilerOptions.paths, {
+        prefix: '<rootDir>/',
+    }),
 
     // An array of regexp pattern strings, matched against all module paths before considered 'visible' to the module loader
     modulePathIgnorePatterns: ['<rootDir>/dist/'],
