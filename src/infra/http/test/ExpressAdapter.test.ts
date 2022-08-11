@@ -1,5 +1,5 @@
-import ExpressMock from '../mock/ExpressMock';
-import ExpressAdapter from '@shared/infra/http/adapter/ExpressAdapter';
+import ExpressAdapter from '../adapter/ExpressAdapter';
+import ExpressMock from './mock/ExpressMock';
 
 describe('Suite - ExpressAdapter - Unit Test', () => {
     let expressAdapter: ExpressAdapter;
