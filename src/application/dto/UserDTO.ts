@@ -1,4 +1,5 @@
-import type { Phone } from '../../domain/entity/type/Phone';
+// TODO remover dependencia do domain
+import type { Phone } from '../type/Phone';
 
 export default class UserDTO {
     constructor(

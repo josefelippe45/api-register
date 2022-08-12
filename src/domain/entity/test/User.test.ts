@@ -1,4 +1,4 @@
-import type { Phone } from '../type/Phone';
+import type { Phone } from '../../../application/type/Phone';
 import User from '../User';
 import { defaultUser } from './fixture/UserFixtures';
 
