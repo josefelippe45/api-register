@@ -2,13 +2,12 @@
     "compilerOptions": {
         "outDir": "dist",
         "esModuleInterop": true,
+        "target": "ES5",
+        "experimentalDecorators": true,
         "module": "commonjs",
+        "sourceMap": true,
         "moduleResolution": "node",
-        "resolveJsonModule": true,
-        "baseUrl": "./",
-        "paths": {
-            "@shared/*": ["src/shared/*"]
-        }
+        "resolveJsonModule": true
     },
     "include": ["src/**/*.ts"],
     "exclude": ["node_modules", "**/*.d.ts"]
