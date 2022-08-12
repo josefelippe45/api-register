@@ -28,7 +28,11 @@ module.exports = {
         '!src/**/fake/**',
         '!src/**/mock/**',
         '!src/main.ts',
-        '!src/shared/infra/http/Router.ts',
+        '!src/infra/builder/**',
+        '!src/infra/config/**',
+        '!src/infra/controller/**',
+        '!src/infra/database/**',
+        '!src/infra/http/Router.ts',
     ],
 
     // The directory where Jest should output its coverage files

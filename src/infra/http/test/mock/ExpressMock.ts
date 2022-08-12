@@ -1,8 +1,13 @@
-import express from 'express';
+import express, { Request, Response } from 'express';
 
 export default class ExpressMock {
-    private static request = { body: {} };
-    private static response = { json: jest.fn() };
+    public static request = {
+        body: {},
+        headers: { authorization: 'Bearer ToKeNxPTo' },
+    } as Request;
+    public static response = {
+        status: jest.fn(() => ({ json: jest.fn() })),
+    } as unknown as Response;
 
     public static use = jest.fn();
     public use = ExpressMock.use;

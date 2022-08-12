@@ -11,4 +11,6 @@ export const signUpUserFixture: UserDTO = {
             number: '12345-1234',
         },
     ],
+    createdAt: new Date(),
+    updatedAt: new Date(),
 };

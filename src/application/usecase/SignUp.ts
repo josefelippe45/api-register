@@ -1,3 +1,5 @@
+import BaseError from '../../domain/error/BaseError';
+import UserError from '../../domain/error/UserError';
 import UserDAO from '../dao/UserDAO';
 import UserDTO from '../dto/UserDTO';
 
@@ -8,12 +10,12 @@ export default class SignUp {
         this.userDAO = userDAO;
     }
 
-    public async execute(user: UserDTO): Promise<void> {
+    public async execute(user: UserDTO): Promise<UserDTO> {
         const { email } = user;
         const existentUser = await this.userDAO.findByEmail(email);
         if (existentUser) {
-            throw new Error('User already exists');
+            throw new BaseError(UserError.ALREADY_EXISTS);
         }
-        await this.userDAO.create(user);
+        return this.userDAO.create(user);
     }
 }

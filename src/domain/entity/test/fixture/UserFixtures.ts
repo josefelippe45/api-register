@@ -8,7 +8,9 @@ export const defaultUser: UserDTO = {
     phones: [
         {
             ddd: '11',
-            number: '12345-1234',
+            number: '123451234',
         },
     ],
+    createdAt: new Date(),
+    updatedAt: new Date(),
 };

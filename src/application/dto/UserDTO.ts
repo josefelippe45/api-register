@@ -1,5 +1,4 @@
-// TODO remover dependencia do domain
-import type { Phone } from '../type/Phone';
+import type { Phone } from '../../domain/type/Phone';
 
 export default class UserDTO {
     constructor(
@@ -7,6 +6,8 @@ export default class UserDTO {
         readonly email: string,
         readonly password: string,
         readonly phones: Phone[],
-        readonly token: string
+        readonly token: string,
+        readonly createdAt: Date,
+        readonly updatedAt: Date
     ) {}
 }

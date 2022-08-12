@@ -1,3 +1,4 @@
+import UserError from '../../../domain/error/UserError';
 import SignUp from '../SignUp';
 import UserDAOFake from './fake/UserDAOFake';
 import { signUpUserFixture } from './fixture/SignUpFixture';
@@ -16,9 +17,9 @@ describe('Suite - SignUp - Unit Test', () => {
     });
 
     it('should throw if user already exists', async () => {
-        await expect(() =>
+        await expect(async () =>
             signUp.execute(signUpUserFixture)
-        ).rejects.toThrowError('User already exists');
+        ).rejects.toThrow(UserError.ALREADY_EXISTS.message);
 
         expect(userDAOFindByEmailSpy).toHaveBeenCalledTimes(1);
         expect(userDAOCreateSpy).not.toHaveBeenCalled();
