@@ -1,5 +1,6 @@
 /* eslint-disable @typescript-eslint/explicit-module-boundary-types */
-import MongooseConnectionAdapter from '../adapter/MongoConnectionAdapter';
+import { connect, connection } from 'mongoose';
+import { MONGO_URI } from '../../config/Environment';
 
 export function ConnectToMongo(
     _target: unknown,
@@ -8,15 +9,13 @@ export function ConnectToMongo(
 ) {
     const original = descriptor.value;
     descriptor.value = async function (...args: unknown[]) {
-        await new MongooseConnectionAdapter().open();
+        await connect(MONGO_URI);
         console.info('connected to mongo');
         try {
             const result = await original.apply(this, args);
             return result;
-        } catch (error) {
-            console.info(error);
         } finally {
-            await new MongooseConnectionAdapter().close();
+            await connection.close();
             console.info('connection closed');
         }
     };

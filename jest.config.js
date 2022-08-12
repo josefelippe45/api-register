@@ -1,6 +1,4 @@
 /* eslint-disable @typescript-eslint/no-var-requires */
-const { pathsToModuleNameMapper } = require('ts-jest');
-const { compilerOptions } = require('./tsconfig');
 /*
  * For a detailed explanation regarding each configuration property and type check, visit:
  * https://jestjs.io/docs/configuration
@@ -17,7 +15,7 @@ module.exports = {
     // cacheDirectory: "C:\\Users\\felip\\AppData\\Local\\Temp\\jest",
 
     // Automatically clear mock calls, instances, contexts and results before every test
-    // clearMocks: true,
+    clearMocks: true,
 
     // Indicates whether the coverage information should be collected while executing the test
     // collectCoverage: true,
@@ -99,9 +97,9 @@ module.exports = {
     // ],
 
     // A map from regular expressions to module names or to arrays of module names that allow to stub out resources with a single module
-    moduleNameMapper: pathsToModuleNameMapper(compilerOptions.paths, {
-        prefix: '<rootDir>/',
-    }),
+    // moduleNameMapper: pathsToModuleNameMapper(compilerOptions.paths, {
+    //     prefix: '<rootDir>/',
+    // }),
 
     // An array of regexp pattern strings, matched against all module paths before considered 'visible' to the module loader
     modulePathIgnorePatterns: ['<rootDir>/dist/'],

@@ -12,13 +12,12 @@ export default class ExpressAdapter implements Http {
     public on<TResponse>(
         url: string,
         method: string,
-        fn: (request: Request) => Promise<TResponse>
+        fn: (request: Request, response: Response) => Promise<TResponse>
     ): void {
         this.app[method](
             url,
             async (request: Request, response: Response): Promise<void> => {
-                const result = await fn(request);
-                response.json(result);
+                await fn(request, response);
             }
         );
     }

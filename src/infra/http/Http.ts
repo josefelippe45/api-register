@@ -1,9 +1,9 @@
-import { Request } from 'express';
+import { Request, Response } from 'express';
 export default interface Http {
     on<TResponse>(
         url: string,
         method: string,
-        fn: (request: Request) => Promise<TResponse>
+        fn: (request: Request, response: Response) => Promise<TResponse>
     ): void;
     listen(port: number): void;
 }
