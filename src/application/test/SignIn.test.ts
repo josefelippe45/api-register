@@ -3,7 +3,7 @@ import SignInDTOInput from '../dto/SignInDTO';
 import UserError from '../../domain/error/UserError';
 import UserDAOFake from './fake/UserDAOFake';
 import SignIn from '../usecase/SignIn';
-import { userFixture } from '../../domain/test/fixture/UserFixtures';
+import { userFixture } from '../../domain/test/fixture/UserFixture';
 
 describe('Suite - SignIn - Unit Test', () => {
     let signIn: SignIn;

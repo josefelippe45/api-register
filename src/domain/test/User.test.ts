@@ -1,6 +1,6 @@
 import type { Phone } from '../type/Phone';
 import UserBuilder from '../../infra/builder/UserBuilder';
-import { userFixture } from './fixture/UserFixtures';
+import { userFixture } from './fixture/UserFixture';
 import User from '../entity/User';
 
 describe('Suite - User - Unit Test', () => {
