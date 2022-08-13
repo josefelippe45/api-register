@@ -1,5 +1,5 @@
 import { BaseErrorStatus } from '../enum/BaseErrorStatus';
-import type { HttpErrorOutput } from '../type/HttpErrorOutput';
+import type { BaseErrorOutput } from '../type/HttpErrorOutput';
 import BaseError from './BaseError';
 
 export default class HandleBaseError {
@@ -8,17 +8,17 @@ export default class HandleBaseError {
 
     constructor(private readonly error: Error | BaseError) {}
 
-    public getError(): HttpErrorOutput {
-        if (this.error instanceof BaseError) {
+    public getError(): BaseErrorOutput {
+        if (this.error['status']) {
             this.response = { message: this.error.message };
-            this.status = this.error.status;
+            this.status = this.error['status'];
             return {
                 response: this.response,
                 status: this.status,
             };
         }
         return {
-            response: this.response,
+            response: { message: 'Internal Server Error!' },
             status: BaseErrorStatus.INTERNAL_SERVER_ERROR,
         };
     }

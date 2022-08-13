@@ -1,16 +1,19 @@
-import UserDTO from '../../../../application/dto/UserDTO';
+import User from '../../User';
+import { v4 as uuidv4 } from 'uuid';
 
-export const defaultUser: UserDTO = {
-    name: 'jose',
-    email: 'jose@jose.com',
-    password: 'J0sÉ@1234',
-    token: 'xpto',
-    phones: [
+export const userFixture: User = new User(
+    uuidv4(),
+    'jose',
+    'jose@jose.com',
+    'J0sÉ@1234',
+    [
         {
             ddd: '11',
             number: '123451234',
         },
     ],
-    createdAt: new Date(),
-    updatedAt: new Date(),
-};
+    'token',
+    new Date(),
+    new Date(),
+    new Date()
+);

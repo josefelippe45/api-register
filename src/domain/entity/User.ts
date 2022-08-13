@@ -1,18 +1,17 @@
 import type { Phone } from '../type/Phone';
 
 export default class User {
-    public readonly lastLogin: Date;
-
     constructor(
+        readonly id: string,
         readonly name: string,
         readonly email: string,
         readonly password: string,
         readonly phones: Phone[],
         readonly token: string,
         readonly createdAt: Date,
-        readonly updatedAt: Date
+        readonly updatedAt: Date,
+        readonly lastLogin: Date
     ) {
-        this.lastLogin = this.createdAt;
         this.validatePhones();
     }
 

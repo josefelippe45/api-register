@@ -1,12 +1,14 @@
 import type { Phone } from '../../type/Phone';
 import UserBuilder from '../../../infra/builder/UserBuilder';
-import { defaultUser } from './fixture/UserFixtures';
+import { userFixture } from './fixture/UserFixtures';
+import User from '../User';
 
 describe('Suite - User - Unit Test', () => {
     it('should throw if there is no phone', () => {
-        expect(() =>
-            new UserBuilder({ ...defaultUser, phones: [] }).toEntity()
-        ).toThrowError('User must have at least one phone');
+        const user = { ...userFixture, phones: [] } as User;
+        expect(() => new UserBuilder(user).toDTOOutput()).toThrowError(
+            'User must have at least one phone'
+        );
     });
 
     it('should throw if there is invalid phones', () => {
@@ -16,17 +18,14 @@ describe('Suite - User - Unit Test', () => {
                 number: '123451234',
             },
         ];
-        expect(() =>
-            new UserBuilder({
-                ...defaultUser,
-                phones: invalidPhones,
-            }).toEntity()
-        ).toThrowError('All phones must be valid');
+        const user = { ...userFixture, phones: invalidPhones } as User;
+        expect(() => new UserBuilder(user).toDTOOutput()).toThrowError(
+            'All phones must be valid'
+        );
     });
 
-    it('should create a new user where lastLogin is equal to createdAt', () => {
-        const user = new UserBuilder(defaultUser).toEntity();
+    it('should create a new user', () => {
+        const user = new UserBuilder(userFixture).toDTOOutput();
         expect(user).toBeDefined();
-        expect(user.lastLogin).toEqual(user.createdAt);
     });
 });

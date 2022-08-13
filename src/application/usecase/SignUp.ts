@@ -1,7 +1,8 @@
 import BaseError from '../../domain/error/BaseError';
 import UserError from '../../domain/error/UserError';
 import UserDAO from '../dao/UserDAO';
-import UserDTO from '../dto/UserDTO';
+import UserDTOInput from '../dto/UserDTOInput';
+import UserDTOOutput from '../dto/UserDTOOutput';
 
 export default class SignUp {
     private userDAO: UserDAO;
@@ -10,7 +11,7 @@ export default class SignUp {
         this.userDAO = userDAO;
     }
 
-    public async execute(user: UserDTO): Promise<UserDTO> {
+    public async execute(user: UserDTOInput): Promise<UserDTOOutput> {
         const { email } = user;
         const existentUser = await this.userDAO.findByEmail(email);
         if (existentUser) {
