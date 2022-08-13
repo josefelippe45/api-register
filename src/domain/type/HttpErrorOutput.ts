@@ -1,1 +1,1 @@
-export type HttpErrorOutput = { response: { message: string }; status: number };
+export type BaseErrorOutput = { response: { message: string }; status: number };

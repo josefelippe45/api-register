@@ -1,6 +1,6 @@
 import ExpressMock from './mock/ExpressMock';
 import jwt from 'jsonwebtoken';
-import VerifyJWT from '../middleware/VerifyJWT';
+import VerifyJWT from '../http/middleware/VerifyJWT';
 
 describe('Suite - ValidateToken - Unit Test', () => {
     let validateToken: VerifyJWT;
@@ -35,8 +35,8 @@ describe('Suite - ValidateToken - Unit Test', () => {
     });
 
     it('should call next function', async () => {
-        const invalidToken = 'Bearer invalidToken';
-        ExpressMock.request.headers.authorization = invalidToken;
+        const token = 'Bearer validToken';
+        ExpressMock.request.headers.authorization = token;
         jwtVerifySpy.mockResolvedValueOnce(null);
         await validateToken.execute(
             ExpressMock.request,

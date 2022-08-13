@@ -1,16 +1,13 @@
-import UserDTO from '../../../dto/UserDTO';
+import UserDTOInput from '../../dto/UserDTOInput';
 
-export const signUpUserFixture: UserDTO = {
+export const signUpUserFixture: UserDTOInput = {
     email: 'email@email.com',
     name: 'name',
     password: 'password',
-    token: 'token',
     phones: [
         {
             ddd: '11',
             number: '12345-1234',
         },
     ],
-    createdAt: new Date(),
-    updatedAt: new Date(),
 };

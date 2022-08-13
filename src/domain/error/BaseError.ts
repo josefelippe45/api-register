@@ -6,7 +6,7 @@ export default class BaseError extends Error {
     public readonly message: string;
 
     constructor(readonly error: BaseErrorInput) {
-        super(error.message);
+        super();
         this.message = error.message;
         this.status = error.status;
     }
