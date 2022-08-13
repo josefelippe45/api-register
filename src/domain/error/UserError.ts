@@ -17,4 +17,14 @@ export default class UserError extends BaseError {
         status: BaseErrorStatus.BAD_REQUEST,
         message: 'Email and/or password invalids!',
     };
+
+    public static INVALID_ID: BaseErrorInput = {
+        status: BaseErrorStatus.BAD_REQUEST,
+        message: 'Id is invalid!',
+    };
+
+    public static ID_NOT_FOUND: BaseErrorInput = {
+        status: BaseErrorStatus.BAD_REQUEST,
+        message: 'Id not found!',
+    };
 }

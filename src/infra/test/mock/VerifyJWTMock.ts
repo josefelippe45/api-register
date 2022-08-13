@@ -3,7 +3,7 @@ export default class VerifyJWTMock {
     public execute = VerifyJWTMock.execute;
 }
 
-jest.mock('../../middleware/VerifyJWT', () => ({
+jest.mock('../../http/middleware/VerifyJWT', () => ({
     __esModule: true,
     default: VerifyJWTMock,
 }));

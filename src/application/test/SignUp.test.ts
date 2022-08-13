@@ -1,5 +1,5 @@
-import UserError from '../../../domain/error/UserError';
-import SignUp from '../SignUp';
+import UserError from '../../domain/error/UserError';
+import SignUp from '../usecase/SignUp';
 import UserDAOFake from './fake/UserDAOFake';
 import { signUpUserFixture } from './fixture/SignUpFixture';
 

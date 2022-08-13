@@ -1,4 +1,4 @@
-import User from '../../User';
+import User from '../../entity/User';
 import { v4 as uuidv4 } from 'uuid';
 
 export const userFixture: User = new User(

@@ -4,6 +4,7 @@ import { Request, Response } from 'express';
 import SignUpController from '../controller/SignUpController';
 import BaseError from '../../domain/error/BaseError';
 import SignInController from '../controller/SignInController';
+import GetUserByIdController from '../controller/GetUserByIdController';
 
 export default class Router {
     constructor(readonly http: Http) {
@@ -31,10 +32,11 @@ export default class Router {
             }
         );
         this.http.onPrivate(
-            '/private',
+            '/user/:id',
             'get',
-            async (_request: Request, response: Response) => {
-                response.status(200).json({ message: 'private' });
+            async (request: Request, response: Response) => {
+                const user = await new GetUserByIdController().execute(request);
+                response.status(200).json(user);
             }
         );
         this.http.on('*', 'get', async (): Promise<void> => {

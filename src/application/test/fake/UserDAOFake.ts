@@ -1,9 +1,9 @@
 /* eslint-disable @typescript-eslint/no-unused-vars */
-import User from '../../../../domain/entity/User';
-import UserDAO from '../../../dao/UserDAO';
-import SignInDTOInput from '../../../dto/SignInDTO';
-import UserDTOInput from '../../../dto/UserDTOInput';
-import UserDTOOutput from '../../../dto/UserDTOOutput';
+import User from '../../../domain/entity/User';
+import UserDAO from '../../dao/UserDAO';
+import SignInDTOInput from '../../dto/SignInDTO';
+import UserDTOInput from '../../dto/UserDTOInput';
+import UserDTOOutput from '../../dto/UserDTOOutput';
 import { signInLastLoginFixture } from '../fixture/SignInFixture';
 
 export default class UserDAOFake implements UserDAO {
@@ -21,8 +21,11 @@ export default class UserDAOFake implements UserDAO {
             lastLogin: new Date(),
         } as User;
     }
+    public async getById(_id: string): Promise<UserDTOOutput> {
+        return this.user;
+    }
 
-    public async updateLastLogin(user: UserDTOInput): Promise<UserDTOOutput> {
+    public async signIn(user: UserDTOInput): Promise<UserDTOOutput> {
         const userUpdated = {
             ...user,
             lastLogin: signInLastLoginFixture,

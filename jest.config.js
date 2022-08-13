@@ -28,6 +28,8 @@ module.exports = {
         '!src/**/fake/**',
         '!src/**/mock/**',
         '!src/main.ts',
+        '!src/application/decorator/**',
+        '!src/application/dto/**',
         '!src/infra/builder/**',
         '!src/infra/config/**',
         '!src/infra/controller/**',

@@ -1,4 +1,4 @@
-import UserDTOInput from '../../../dto/UserDTOInput';
+import UserDTOInput from '../../dto/UserDTOInput';
 
 export const signUpUserFixture: UserDTOInput = {
     email: 'email@email.com',

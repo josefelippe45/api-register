@@ -1,8 +1,9 @@
-import SignInDTOInput from '../../dto/SignInDTO';
-import UserError from '../../../domain/error/UserError';
+import BcryptMock from './mocks/BcryptMock';
+import SignInDTOInput from '../dto/SignInDTO';
+import UserError from '../../domain/error/UserError';
 import UserDAOFake from './fake/UserDAOFake';
-import SignIn from '../SignIn';
-import { signInLastLoginFixture } from './fixture/SignInFixture';
+import SignIn from '../usecase/SignIn';
+import { userFixture } from '../../domain/test/fixture/UserFixtures';
 
 describe('Suite - SignIn - Unit Test', () => {
     let signIn: SignIn;
@@ -33,8 +34,18 @@ describe('Suite - SignIn - Unit Test', () => {
         );
     });
 
-    it('should return logged user with updated lastLogin', async () => {
+    it('should return logged', async () => {
+        userDAOFindByCredentialsSpy.mockResolvedValueOnce(userFixture);
+        BcryptMock.compare.mockResolvedValueOnce(true);
         const loggedUser = await signIn.execute(credentials);
-        expect(loggedUser.lastLogin).toEqual(signInLastLoginFixture);
+        expect(loggedUser).toBeDefined();
+    });
+
+    it('should throw if user has an invalid password', async () => {
+        userDAOFindByCredentialsSpy.mockResolvedValueOnce(userFixture);
+        BcryptMock.compare.mockResolvedValueOnce(false);
+        await expect(() => signIn.execute(credentials)).rejects.toThrow(
+            UserError.INVALID_CREDENTIALS.message
+        );
     });
 });

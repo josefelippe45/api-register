@@ -3,6 +3,7 @@ import HandleBaseError from '../../../domain/error/HandleBaseError';
 import Http from '../Http';
 import VerifyJWT from '../middleware/VerifyJWT';
 import type { HttpRequest } from '../../../domain/type/HttpRequest';
+
 export default class ExpressAdapter implements Http {
     private app: Express;
     private verifyJWT: VerifyJWT;

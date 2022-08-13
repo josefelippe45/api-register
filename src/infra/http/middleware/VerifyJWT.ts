@@ -12,13 +12,13 @@ export default class VerifyJWT implements Middleware {
         const authHeader = request.headers.authorization;
         const token = authHeader && authHeader.split(' ')[1];
         if (!token) {
-            response.status(401).json({ error: 'Token not provided' });
+            response.status(401).json({ error: 'Unauthorized!' });
         }
         try {
             await Promise.resolve(jwt.verify(token, JWT_SECRET));
             next();
         } catch (error) {
-            response.status(401).json({ error: 'Token invalid' });
+            response.status(401).json({ error: 'Unauthorized!' });
         }
     }
 }

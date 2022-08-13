@@ -1,7 +1,7 @@
-import type { Phone } from '../../type/Phone';
-import UserBuilder from '../../../infra/builder/UserBuilder';
+import type { Phone } from '../type/Phone';
+import UserBuilder from '../../infra/builder/UserBuilder';
 import { userFixture } from './fixture/UserFixtures';
-import User from '../User';
+import User from '../entity/User';
 
 describe('Suite - User - Unit Test', () => {
     it('should throw if there is no phone', () => {

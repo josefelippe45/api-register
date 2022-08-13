@@ -8,5 +8,6 @@ export default interface UserDAO {
     findByCredentials(
         credentials: SignInDTOInput
     ): Promise<UserDTOOutput | null>;
-    updateLastLogin(user: UserDTOInput): Promise<UserDTOOutput>;
+    signIn(user: UserDTOInput): Promise<UserDTOOutput>;
+    getById(id: string): Promise<UserDTOOutput>;
 }

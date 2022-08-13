@@ -1,6 +1,6 @@
 import ExpressMock from './mock/ExpressMock';
 import jwt from 'jsonwebtoken';
-import VerifyJWT from '../middleware/VerifyJWT';
+import VerifyJWT from '../http/middleware/VerifyJWT';
 
 describe('Suite - ValidateToken - Unit Test', () => {
     let validateToken: VerifyJWT;

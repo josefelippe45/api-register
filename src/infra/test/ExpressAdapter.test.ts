@@ -1,6 +1,6 @@
 import ExpressMock from './mock/ExpressMock';
 import VerifyJWTMock from './mock/VerifyJWTMock';
-import ExpressAdapter from '../adapter/ExpressAdapter';
+import ExpressAdapter from '../http/adapter/ExpressAdapter';
 
 describe('Suite - ExpressAdapter - Unit Test', () => {
     let expressAdapter: ExpressAdapter;
