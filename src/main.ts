@@ -1,5 +1,7 @@
-import ExpressAdapter from '@shared/infra/http/adapter/ExpressAdapter';
-import Router from '@shared/infra/http/Router';
+import * as dotenv from 'dotenv';
+dotenv.config();
+import ExpressAdapter from './infra/http/adapter/ExpressAdapter';
+import Router from './infra/http/Router';
 
 const http = new ExpressAdapter();
 
