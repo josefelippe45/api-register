@@ -14,7 +14,7 @@
 
 ## config your `.env`
 
-### based on file `.env.example`, create your `.env` with your information.
+### based on file `.env.example`, create your own `.env`.
 
 ## run
 
