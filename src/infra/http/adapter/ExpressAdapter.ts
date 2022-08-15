@@ -31,6 +31,7 @@ export default class ExpressAdapter implements Http {
             try {
                 await fn(request, response);
             } catch (error) {
+                console.info(error);
                 const { response: errorResponse, status } = new HandleBaseError(
                     error
                 ).getError();

@@ -30,6 +30,7 @@ module.exports = {
         '!src/main.ts',
         '!src/application/decorator/**',
         '!src/application/dto/**',
+        '!src/application/test/mocks/**',
         '!src/infra/builder/**',
         '!src/infra/config/**',
         '!src/infra/controller/**',

@@ -14,13 +14,11 @@ export default class SignIn {
     }
 
     public async execute(signInDTO: SignInDTOInput): Promise<UserDTOOutput> {
-        const user = await this.getLoggedUser(signInDTO);
+        const user = await this.getUser(signInDTO);
         return this.userDAO.signIn(user);
     }
 
-    private async getLoggedUser(
-        signInDTO: SignInDTOInput
-    ): Promise<UserDTOOutput> {
+    private async getUser(signInDTO: SignInDTOInput): Promise<UserDTOOutput> {
         const { email, password } = signInDTO;
         if (!email || !password) {
             throw new BaseError(UserError.EMPTY_PARAMS);
