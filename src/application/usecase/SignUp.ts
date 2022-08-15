@@ -12,11 +12,21 @@ export default class SignUp {
     }
 
     public async execute(user: UserDTOInput): Promise<UserDTOOutput> {
-        const { email } = user;
+        const { email, password } = user;
+        this.validatePassword(password);
         const existentUser = await this.userDAO.findByEmail(email);
         if (existentUser) {
             throw new BaseError(UserError.ALREADY_EXISTS);
         }
         return this.userDAO.create(user);
+    }
+
+    private validatePassword(password: string): void {
+        const regExpPassword =
+            /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?!.*\s).{8,16}$/;
+
+        if (!regExpPassword.test(password)) {
+            throw new BaseError(UserError.INVALID_PASSWORD);
+        }
     }
 }

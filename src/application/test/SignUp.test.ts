@@ -25,6 +25,15 @@ describe('Suite - SignUp - Unit Test', () => {
         expect(userDAOCreateSpy).not.toHaveBeenCalled();
     });
 
+    it('should throw if password is not valid', async () => {
+        await expect(async () =>
+            signUp.execute({ ...signUpUserFixture, password: '123' })
+        ).rejects.toThrow(UserError.INVALID_PASSWORD.message);
+
+        expect(userDAOFindByEmailSpy).not.toHaveBeenCalled();
+        expect(userDAOCreateSpy).not.toHaveBeenCalled();
+    });
+
     it('should create a new user', async () => {
         userDAOFindByEmailSpy.mockResolvedValue(null);
         await signUp.execute(signUpUserFixture);
